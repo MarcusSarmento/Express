@@ -1,28 +1,16 @@
 const express = require('express');
 const app = express(); // Create an instance of an Express application
 const port = 5000;
+const routes = require('./routes/index');
+const path = require('path');// Import the path module
 
-app.get('/', (req, res, next) => { res.send('My Fist Express App!') })
+app.use('/', routes); // Use the imported routes for the root path
+
+app.set('views', path.join(__dirname, 'views')); // Set the views directory
+app.set('view engine', 'hjs'); // Set up the view engine
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });// Start the server and listen on the specified port
 
-app.get('/json', (req, res, next) => {
-    let objetoTest = new Object();
-
-    objetoTest.atributo1 = "teste1";
-    objetoTest.atributo2 = "teste2";
-    objetoTest.atributo3 = "teste3";
-
-    res.json(objetoTest);
-}); // Define a route that responds with a JSON object
-
-app.get('/query', (req, res, next) => {
-    const query = req.query;
-    res.json(query);
-}); // Define a route that responds with query parameters as JSON
-
-app.get('/params/:name/:location/:ocupation', (req, res, next) => {
-    const params = req.params;
-    res.json(params);
-}); // Define a route that responds with URL parameters as JSON
+app.use(express.static(path.join(__dirname, 'public'))); // Serve static files from the 'public' directory
