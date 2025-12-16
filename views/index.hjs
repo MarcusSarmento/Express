@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" href="/css/style.css">
     </head>
 
     <body>
         <h1>This is the {{name}} Template</h1>
         <p>Today is {{date}}. My name is {{firstName}}</p>
+        <img style="width:200px height:200px" src="/images/puppy.png" >
+    
     </body>
 </html>

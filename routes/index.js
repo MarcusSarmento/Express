@@ -5,7 +5,14 @@ module.exports = router;
 
 
 router.get('/', (req, res, next) => {
-    const data = {name: 'Index', date : 'December 3,2025'}
+    const data = {
+        name: 'Index',
+        date : 'December 3,2025',
+        profile: [
+            {name: 'Mike'},
+            {name: 'Cindy'},
+            {name: 'Joe'}
+        ]}
     res.render('index', data);
     }
 ); // Define a route for the root path that renders the 'index' view with data
