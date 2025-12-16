@@ -7,6 +7,18 @@
     <body>
         <h1>This is the {{name}} Template</h1>
         <p>Today is {{date}}. My name is {{firstName}}</p>
+
+        <ol>
+            {{#profiles}}
+            <li>
+                {{name}}, {{city}},
+                {{#profession}} 
+                    profession: {{profession}}
+                {{/profession}}
+            </li>
+            {{/profiles}}
+        </ol>
+
         <img style="width:200px height:200px" src="/images/puppy.png" >
     
     </body>

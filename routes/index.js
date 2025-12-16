@@ -8,10 +8,10 @@ router.get('/', (req, res, next) => {
     const data = {
         name: 'Index',
         date : 'December 3,2025',
-        profile: [
-            {name: 'Mike'},
-            {name: 'Cindy'},
-            {name: 'Joe'}
+        profiles: [
+            {name: 'Mike', city: 'New York', profession: 'Developer'},
+            {name: 'Cindy', city: 'San Francisco'},
+            {name: 'Joe', city: 'Chicago', profession: 'Designer'}
         ]}
     res.render('index', data);
     }
