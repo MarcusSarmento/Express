@@ -1,22 +1,26 @@
 const express = require('express');
 const router = express.Router();
-
-module.exports = router;
-
+const profiles = [
+    { name: 'Mike', city: 'New York', profession: 'Developer' },
+    { name: 'Cindy', city: 'San Francisco' },
+    { name: 'Joe', city: 'Chicago', profession: 'Designer' }
+];
 
 router.get('/', (req, res, next) => {
     const data = {
         name: 'Index',
         date : 'December 3,2025',
-        profiles: [
-            {name: 'Mike', city: 'New York', profession: 'Developer'},
-            {name: 'Cindy', city: 'San Francisco'},
-            {name: 'Joe', city: 'Chicago', profession: 'Designer'}
-        ]}
+        profiles: profiles
+    };
+    
     res.render('index', data);
-    }
-); // Define a route for the root path that renders the 'index' view with data
+}); // Define a route for the root path that renders the 'index' view with data
 
+router.post('/join', (req, res, next) => {
+    const body = req.body;
+    profiles.push(body);
+    res.redirect('/');
+});
 
 router.get('/json', (req, res, next) => {
     const data = {name: 'Marcus', location: 'Juiz de Fora'};
@@ -37,3 +41,6 @@ router.get('/params/:name/:location/:ocupation', (req, res, next) => {
     const params = req.params;
     res.json({params : params});
 }); // Define a route that responds with URL parameters as JSON
+
+
+module.exports = router;
