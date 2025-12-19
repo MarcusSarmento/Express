@@ -5,13 +5,15 @@ const profiles = [
     { name: 'Cindy', city: 'San Francisco' },
     { name: 'Joe', city: 'Chicago', profession: 'Designer' }
 ];
+let user = null;
 
 router.get('/', (req, res, next) => {
     console.log('Timestamp:' + req.timestamp);
     const data = {
         name: 'Index',
         date : req.timestamp,
-        profiles: profiles
+        profiles: profiles,
+        user: user
     };
     
     res.render('index', data);
@@ -23,11 +25,28 @@ router.post('/join', (req, res, next) => {
     res.redirect('/');
 });
 
+router.post('/login', (req, res, next) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    if (password === "1234"){
+        user = {username: username};
+        res.redirect('/');
+        return 
+    }
+
+    res.json({data: 'Login Failed'});
+}); // Define a route that handles login form submissions and responds with JSON
+
 router.get('/json', (req, res, next) => {
     console.log('Timestamp:' + req.timestamp);
     const data = {name: 'Marcus', location: 'Juiz de Fora', date: req.timestamp};
     res.json(data);
 }); // Define a route that responds with a JSON object
+
+router.get('/login', (req, res, next) => {
+    res.render('login', null);
+}); // Define a route that renders the 'login' view
 
 router.get('/html', (req, res, next) => {
     const html = '<html><h1 style="color:red">This is a HTML response</h1></html>'

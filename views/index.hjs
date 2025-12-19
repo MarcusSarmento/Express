@@ -6,7 +6,7 @@
 
     <body>
         <h1>This is the {{name}} Template</h1>
-        <p>Today is {{date}}. My name is {{firstName}}</p>
+        <p>Today is {{date}}. {{#user}}My name is {{user.username}}.{{/user}}</p>
 
         <ol>
             {{#profiles}}
