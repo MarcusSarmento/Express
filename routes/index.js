@@ -7,9 +7,10 @@ const profiles = [
 ];
 
 router.get('/', (req, res, next) => {
+    console.log('Timestamp:' + req.timestamp);
     const data = {
         name: 'Index',
-        date : 'December 3,2025',
+        date : req.timestamp,
         profiles: profiles
     };
     
@@ -23,7 +24,8 @@ router.post('/join', (req, res, next) => {
 });
 
 router.get('/json', (req, res, next) => {
-    const data = {name: 'Marcus', location: 'Juiz de Fora'};
+    console.log('Timestamp:' + req.timestamp);
+    const data = {name: 'Marcus', location: 'Juiz de Fora', date: req.timestamp};
     res.json(data);
 }); // Define a route that responds with a JSON object
 
