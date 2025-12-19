@@ -23,7 +23,7 @@ router.post('/join', (req, res, next) => {
     const body = req.body;
     profiles.push(body);
     res.redirect('/');
-});
+}); // Define a route that handles form submissions and redirects to the root path
 
 router.post('/login', (req, res, next) => {
     const username = req.body.username;
@@ -35,7 +35,11 @@ router.post('/login', (req, res, next) => {
         return 
     }
 
-    res.json({data: 'Login Failed'});
+    const data = {
+        message: ' Please check your password and/or username'
+    }
+
+    res.render('error', data);
 }); // Define a route that handles login form submissions and responds with JSON
 
 router.get('/json', (req, res, next) => {
